@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sun</title>
+
+<style>
+/* ---------- GENERAL STYLES ---------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#87ceeb, #fff3b0);
+    text-align: center;
+    animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+header {
+    background: #ff9800;
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    padding: 20px;
+}
+
+/* ---------- SLIDESHOW ---------- */
+.slideshow {
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 15px;
+    border: 4px solid #ff9800;
+    animation: zoom 1s ease;
+}
+
+@keyframes zoom {
+    from { transform: scale(0.9); }
+    to { transform: scale(1); }
+}
+
+/* ---------- BUTTONS ---------- */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.next { right: 10px; }
+.prev { left: 10px; }
+
+/* ---------- IMAGE LINK ---------- */
+.image-link {
+    margin-top: 20px;
+}
+
+.image-link img {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.image-link img:hover {
+    transform: scale(1.05);
+}
+
+/* ---------- MOBILE FRIENDLY ---------- */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 24px;
+    }
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: #222;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>☀️ The Sun</h1>
+    <p>Light • Energy • Life</p>
+</header>
+
+<div class="container">
+
+    <h2>Sun Slideshow</h2>
+
+    <div class="slideshow">
+        <div class="slide">
+            <img src="sun_image_1.jpg" alt="Sun reflection on river">
+        </div>
+
+        <div class="slide">
+            <img src="sun_image_2.jpg" alt="Sunset over water">
+        </div>
+
+        <a class="prev" onclick="changeSlide(-1)">❮</a>
+        <a class="next" onclick="changeSlide(1)">❯</a>
+    </div>
+
+    <p>
+        The Sun is the heart of our solar system and provides the energy that
+        supports all life on Earth.
+    </p>
+
+    <h3>Click image to learn more</h3>
+
+    <div class="image-link">
+        <a href="sun_details.html">
+            <img src="sun_image_1.jpg" alt="Click to learn more about the Sun">
+        </a>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2025 Sun Webpage</p>
+</footer>
+
+<script>
+let slideIndex = 0;
+showSlide(slideIndex);
+
+// Manual controls
+function changeSlide(n) {
+    showSlide(slideIndex += n);
+}
+
+// Auto slideshow
+setInterval(() => {
+    showSlide(slideIndex += 1);
+}, 4000);
+
+function showSlide(n) {
+    let slides = document.getElementsByClassName("slide");
+    if (n >= slides.length) slideIndex = 0;
+    if (n < 0) slideIndex = slides.length - 1;
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex].style.display = "block";
+}
+</script>
+
+</body>
+</html>
